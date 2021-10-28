@@ -5,10 +5,12 @@
  */
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -37,20 +39,31 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
+    <SafeAreaProvider>
+      <Stack.Navigator>
+        <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+        <Stack.Group screenOptions={{ presentation: 'modal' }}>
+          <Stack.Screen name="Modal" component={ModalScreen} />
+        </Stack.Group>
+      </Stack.Navigator>
+    </SafeAreaProvider>
   );
 }
+//DRAWER NAVIGATOR
+const Drawer = createDrawerNavigator()
 
-/**
- * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
+function DrawerNavigator(){
+  return (
+    <SafeAreaView style={{width: "100%", height: "100%"}} >
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={BottomTabNavigator} />
+      </Drawer.Navigator>
+    </SafeAreaView>
+  )
+}
+
+//BOTTOM TAB NAVIGATOR
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
@@ -58,15 +71,15 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Mail"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Mail"
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+        options={({ navigation }: RootTabScreenProps<'Mail'>) => ({
+          title: 'Mail',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
@@ -85,10 +98,10 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Meet"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Mail',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
