@@ -1,0 +1,4 @@
+tasks:
+  - init: npm i
+    command: npm i -g expo-cli
+             

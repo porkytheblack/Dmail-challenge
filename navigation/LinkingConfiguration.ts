@@ -15,16 +15,90 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          TabOne: {
-            screens: {
-              TabOneScreen: 'one',
-            },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
+              Home: {
+                screens: {
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
+                }
+              },
+              AllInboxes: {
+                screens: {
+                  TabOneScreen: "All Inboxes"
+                }
+              },
+              Primary: {
+                screens: {
+                  TabOneScreen: "Primary"
+                }
+              },
+              Social: {
+                screens: {
+                  TabOneScreen: "Social"
+                }
+              },
+              Promotions: {
+                screens: {
+                  TabOneScreen: "Promotions"
+                }
+              },
+              Starred: {
+                screens: {
+                  TabOneScreen: "Starred"
+                }
+              },
+              Snoozed: {
+                screens: {
+                  TabOneScreen: "Snoozed"
+                }
+              },
+              Important: {
+                screens: {
+                  TabOneScreen: "Important"
+                }
+              },
+              Sent: {
+                screens: {
+                  TabOneScreen: "Sent"
+                }
+              },
+              Scheduled: {
+                screens: {
+                  TabOneScreen: "Scheduled"
+                }
+              },
+              Outbox: {
+                screens: {
+                  TabOneScreen: "Outbox"
+                }
+              },
+              Drafts: {
+                screens: {
+                  TabOneScreen: "Drafts"
+                }
+              },
+              AllMail: {
+                screens: {
+                  TabOneScreen: "All Mail"
+                }
+              },
+              Spam: {
+                screens: {
+                  TabOneScreen: "Spam"
+                }
+              },
+              Trash: {
+                screens: {
+                  TabOneScreen: "Trash"
+                }
+              }
         },
       },
       Modal: 'modal',
