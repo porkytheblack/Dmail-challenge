@@ -24,7 +24,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
         <MaterialIcons name="report" size={24} color="black" />,
         <AntDesign name="delete" size={24} color="black" />
     ]
-    const titles: string = [
+    const titles: string[] = [
         "Home",
         "Primary",
         "Social",

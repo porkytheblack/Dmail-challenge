@@ -31,72 +31,198 @@ const linking: LinkingOptions<RootStackParamList> = {
               },
               AllInboxes: {
                 screens: {
-                  TabOneScreen: "All Inboxes"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Primary: {
                 screens: {
-                  TabOneScreen: "Primary"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Social: {
                 screens: {
-                  TabOneScreen: "Social"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Promotions: {
                 screens: {
-                  TabOneScreen: "Promotions"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Starred: {
                 screens: {
-                  TabOneScreen: "Starred"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Snoozed: {
                 screens: {
-                  TabOneScreen: "Snoozed"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Important: {
                 screens: {
-                  TabOneScreen: "Important"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Sent: {
                 screens: {
-                  TabOneScreen: "Sent"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Scheduled: {
                 screens: {
-                  TabOneScreen: "Scheduled"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Outbox: {
                 screens: {
-                  TabOneScreen: "Outbox"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Drafts: {
                 screens: {
-                  TabOneScreen: "Drafts"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               AllMail: {
                 screens: {
-                  TabOneScreen: "All Mail"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Spam: {
                 screens: {
-                  TabOneScreen: "Spam"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               },
               Trash: {
                 screens: {
-                  TabOneScreen: "Trash"
+                  Mail: {
+                    screens: {
+                      TabOneScreen: 'Mail',
+                    },
+                  },
+                  Meet: {
+                    screens: {
+                      TabTwoScreen: 'Meet',
+                    },
+                  },
                 }
               }
         },

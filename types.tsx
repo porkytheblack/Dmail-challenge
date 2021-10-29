@@ -21,20 +21,20 @@
  };
  export type RootDrawerParamList = {
    Home: NavigatorScreenParams<RootTabParamList> | undefined;
-   AllInboxes: undefined;
-   Primary: undefined;
-   Social: undefined;
-   Promotions: undefined;
-   Starred: undefined;
-   Snoozed: undefined;
-   Important: undefined;
-   Sent: undefined;
-   Scheduled: undefined;
-   Outbox: undefined;
-   Drafts: undefined;
-   AllMail: undefined;
-   Spam: undefined;
-   Trash: undefined;
+   AllInboxes: NavigatorScreenParams<RootTabParamList> | undefined;
+   Primary: NavigatorScreenParams<RootTabParamList> | undefined;
+   Social: NavigatorScreenParams<RootTabParamList> | undefined;
+   Promotions: NavigatorScreenParams<RootTabParamList> | undefined;
+   Starred: NavigatorScreenParams<RootTabParamList> | undefined;
+   Snoozed: NavigatorScreenParams<RootTabParamList> | undefined;
+   Important: NavigatorScreenParams<RootTabParamList> | undefined;
+   Sent: NavigatorScreenParams<RootTabParamList> | undefined;
+   Scheduled: NavigatorScreenParams<RootTabParamList> | undefined;
+   Outbox: NavigatorScreenParams<RootTabParamList> | undefined;
+   Drafts: NavigatorScreenParams<RootTabParamList> | undefined;
+   AllMail: NavigatorScreenParams<RootTabParamList> | undefined;
+   Spam: NavigatorScreenParams<RootTabParamList> | undefined;
+   Trash: NavigatorScreenParams<RootTabParamList> | undefined;
  }
  
  
