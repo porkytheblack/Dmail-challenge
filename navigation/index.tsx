@@ -16,6 +16,8 @@ import CustomDrawerContent from '../components/DrawerContent/Index';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import MailScreen from '../screens/MailScreen';
+import MeetScreen from '../screens/MeetScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
@@ -90,10 +92,11 @@ function BottomTabNavigator() {
       tabBar={(props)=>(<CustomBottomTab {...props} />)}
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
+        headerShown: false
       }}>
       <BottomTab.Screen
         name="Mail"
-        component={TabOneScreen}
+        component={MailScreen}
         options={({ navigation }: RootTabScreenProps<'Mail'>) => ({
           title: 'Mail',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
@@ -115,9 +118,9 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Meet"
-        component={TabTwoScreen}
+        component={MeetScreen}
         options={{
-          title: 'Mail',
+          title: 'Meet',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
