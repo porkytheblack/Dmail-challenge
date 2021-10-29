@@ -65,10 +65,10 @@ const flex_row_even:s = {
 const generate_padding = (t: Number, r: Number, b: Number, l:Number) =>{
     return (
         {
-            paddingTop: t.toString(),
-            paddinRight: r.toString(),
-            paddingBottom: b.toString(),
-            paddingLeft: l.toString()
+            paddingTop: t,
+            paddingRight: r,
+            paddingBottom: b,
+            paddingLeft: l
         }
     )
 }

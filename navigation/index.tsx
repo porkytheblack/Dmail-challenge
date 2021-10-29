@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import CustomDrawerContent from '../components/DrawerContent/Index';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -56,7 +57,7 @@ const Drawer = createDrawerNavigator()
 function DrawerNavigator(){
   return (
     <SafeAreaView style={{width: "100%", height: "100%"}} >
-      <Drawer.Navigator>
+      <Drawer.Navigator drawerContent={(props)=>(<CustomDrawerContent {...props} />)} screenOptions={{headerShown: false}} >
         <Drawer.Screen name="Home" component={BottomTabNavigator} />
       </Drawer.Navigator>
     </SafeAreaView>
