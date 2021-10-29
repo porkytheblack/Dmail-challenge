@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import CustomBottomTab from '../components/CustomBottomTab/Index';
 import CustomDrawerContent from '../components/DrawerContent/Index';
 
 import Colors from '../constants/Colors';
@@ -86,6 +87,7 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Mail"
+      tabBar={(props)=>(<CustomBottomTab {...props} />)}
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>

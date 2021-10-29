@@ -1,8 +1,8 @@
 type s = {
-    display?: String,
-    flexDirection?: String,
-    alignItems?: String,
-    justifyContent?: String
+    display?: string,
+    flexDirection?: string,
+    alignItems?: string,
+    justifyContent?: string
 }
 
 const flex_row_center:s = {
@@ -67,7 +67,7 @@ const flex_row_even:s = {
     alignItems: "center",
     justifyContent: "space-evenly"
 }
-const generate_padding = (t: Number, r: Number, b: Number, l:Number) =>{
+const generate_padding = (t: number, r: number, b: number, l:number) =>{
     return (
         {
             paddingTop: t,
