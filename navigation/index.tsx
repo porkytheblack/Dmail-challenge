@@ -11,6 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import CustomTabBar from '../components/CustomTabBar/Index';
 import CustomDrawerContent from '../components/DrawerContent/Index';
 
 import Colors from '../constants/Colors';
@@ -86,6 +87,7 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Mail"
+      tabBar={(props)=>(<CustomTabBar {...props}  />)}
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
@@ -115,7 +117,7 @@ function BottomTabNavigator() {
         name="Meet"
         component={TabTwoScreen}
         options={{
-          title: 'Mail',
+          title: 'Meet',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
