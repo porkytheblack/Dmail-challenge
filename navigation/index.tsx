@@ -59,6 +59,19 @@ function DrawerNavigator(){
     <SafeAreaView style={{width: "100%", height: "100%"}} >
       <Drawer.Navigator drawerContent={(props)=>(<CustomDrawerContent {...props} />)} screenOptions={{headerShown: false}} >
         <Drawer.Screen name="Home" component={BottomTabNavigator} />
+        <Drawer.Screen name="Primary" component={BottomTabNavigator} />
+        <Drawer.Screen name="Social" component={BottomTabNavigator} />
+        <Drawer.Screen name="Promotions" component={BottomTabNavigator} />
+        <Drawer.Screen name="Starred" component={BottomTabNavigator} />
+        <Drawer.Screen name="Snoozed" component={BottomTabNavigator} />
+        <Drawer.Screen name="Important" component={BottomTabNavigator} />
+        <Drawer.Screen name="Sent" component={BottomTabNavigator} />
+        <Drawer.Screen name="Scheduled" component={BottomTabNavigator} />
+        <Drawer.Screen name="Outbox" component={BottomTabNavigator} />
+        <Drawer.Screen name="Drafts" component={BottomTabNavigator} />
+        <Drawer.Screen name="All mail" component={BottomTabNavigator} />
+        <Drawer.Screen name="Spam" component={BottomTabNavigator} />
+        <Drawer.Screen name="Trash" component={BottomTabNavigator} />
       </Drawer.Navigator>
     </SafeAreaView>
   )
