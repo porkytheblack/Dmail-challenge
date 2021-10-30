@@ -3,10 +3,11 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import SearchBox from '../components/SearchBox/Index'
 import { generate_padding } from '../globalStyles'
 
-const MailScreen = () => {
+const MailScreen = ({navigation}) => {
+    console.log(navigation)
     return (
         <ScrollView style={styles.container} >
-            <SearchBox/>
+            <SearchBox navigation={navigation} />
         </ScrollView>
     )
 }

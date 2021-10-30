@@ -83,9 +83,8 @@ function DrawerNavigator(){
 //BOTTOM TAB NAVIGATOR
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-function BottomTabNavigator() {
+function BottomTabNavigator({navigation}) {
   const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName="Mail"

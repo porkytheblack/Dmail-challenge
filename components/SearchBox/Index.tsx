@@ -1,11 +1,18 @@
 import { MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import { flex_row_between, flex_row_center, flex_row_start } from '../../globalStyles'
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { flex_row_between, flex_row_center, flex_row_start, generate_padding } from '../../globalStyles'
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
+import { useDispatch } from 'react-redux';
+import { action_drawer_out } from '../../redux';
+import Navigation from '../../navigation';
 
-const SearchBox = () => {
+const SearchBox = ({navigation}) => {
+    const dispatch = useDispatch();
+    const drawer = () =>{
+        navigation.openDrawer()
+    }
     let [fontsLoaded] = useFonts({
         Poppins_400Regular
     })
@@ -13,9 +20,16 @@ const SearchBox = () => {
         return (
             <View style={styles.container} >
                 <View style={styles.search_box} >
-                    <MaterialIcons name="menu" size={24} color="black" />
+                    <View style={styles.pressable_container} >
+                        <Pressable onPress={drawer}   >
+                            <MaterialIcons name="menu" size={24} color="black" />
+                        </Pressable>
+                    </View>
+                    
                     <View style={styles.search_text_container} >
-                        <TextInput style={styles.text_input} />
+                        <Text style={styles.text_input} >
+                            Search
+                        </Text>
                     </View>
                     <MaterialIcons name="person" size={24} color="black" />
                 </View>
@@ -33,14 +47,14 @@ export default SearchBox
 
 const styles = StyleSheet.create({
     container : {
-        height: 35,
+        height: 50,
         width: "100%",
         ...flex_row_center
     },
     search_box: {
         ...flex_row_between,
         width: 350,
-        height: 35,
+        height: 50,
         borderRadius: 15,
         backgroundColor: "rgba(153, 238, 255, 0.29)",
         paddingTop: 5,
@@ -50,15 +64,18 @@ const styles = StyleSheet.create({
     },
     search_text_container:{
         height: "100%",
-        width: 280,
+        width: 250,
         ...flex_row_start
     },
     text_input: {
         color: "rgb(154, 147, 147)",
-        fontSize: 12,
+        fontSize: 18,
         fontFamily: "Poppins_400Regular",
-        width: "100%",
-        height: "100%",
         ...flex_row_start
+    },
+    pressable_container: {
+        ...generate_padding(2,5,2,5),
+        borderRadius: 5,
+        marginRight: 20
     }
 })
