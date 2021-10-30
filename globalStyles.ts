@@ -11,6 +11,12 @@ const flex_row_center:s = {
     alignItems: "center",
     justifyContent: "center"
 }
+const flex_row_end:s = {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end"
+}
 
 const flex_row_start:s = {
     display: "flex",
@@ -78,4 +84,4 @@ const generate_padding = (t: number, r: number, b: number, l:number) =>{
     )
 }
 export {generate_padding}
-export {flex_row_center, flex_col_start_top, flex_row_top, flex_col_center, flex_row_start, flex_col_start, flex_row_between, flex_row_around, flex_row_even, flex_col_end}
+export {flex_row_center, flex_row_end, flex_col_start_top, flex_row_top, flex_col_center, flex_row_start, flex_col_start, flex_row_between, flex_row_around, flex_row_even, flex_col_end}

@@ -5,6 +5,7 @@ import { flex_col_center, flex_row_between, flex_row_center, flex_row_even, gene
 import { useFonts, Poppins_600SemiBold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const CustomBottomTab = (props: BottomTabBarProps) => {
@@ -29,20 +30,16 @@ const CustomBottomTab = (props: BottomTabBarProps) => {
             <View style={styles.container} >
                 {active[0] !== "Meet" &&  
                 <View style={styles.pressable_float} >
-                
-                <View  style={styles.compose_container} >
-                <Pressable  style={styles.float_child} android_ripple={{
-                    color: "white",
-                    borderless: false,
-                    radius: 100
-                }} onPress={()=>{go_to_compose()}} >     
-                        <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
-                        <Text style={styles.tab_text} > Compose</Text>
-                        
-                    </Pressable>
-                        
-                </View>
-                
+                    <View  style={styles.compose_container} >
+                        <TouchableOpacity  style={styles.float_child} android_ripple={{
+                            color: "white",
+                            borderless: false,
+                            radius: 100
+                        }} onPress={()=>{go_to_compose()}} >     
+                                <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+                                <Text style={styles.tab_text} > Compose</Text>
+                        </TouchableOpacity>
+                    </View>                
                 </View>
                 }
                 {props.state.routeNames.map((title, index)=>{
@@ -120,16 +117,17 @@ const styles = StyleSheet.create({
     float_child: {
         width: "100%",
         height: "100%",
+        elevation: 30,
         ...flex_row_between,
-        ...generate_padding(0, 10, 0, 10),
-        backgroundColor: "yellow",
-        zIndex: 50
+        ...generate_padding(0, 10, 0, 10)
     },
     pressable_float: {
         position: 'absolute',
         height: 50,
         top: -80,
         right: 30,
+        
+        ...flex_row_center
         
     }
 })
