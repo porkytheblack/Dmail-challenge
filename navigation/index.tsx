@@ -22,6 +22,7 @@ import MeetScreen from '../screens/MeetScreen';
 import ModalScreen from '../screens/ModalScreen';
 import ModalSearchScreen from '../screens/ModalSearchScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -51,6 +52,7 @@ function RootNavigator() {
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
         <Stack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
           <Stack.Screen name="Modal" component={ModalSearchScreen} />
+          <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Stack.Group>
         <Stack.Screen name="Compose" component={ComposeScreen}  />
       </Stack.Navigator>

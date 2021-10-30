@@ -25,7 +25,6 @@ const ComposeScreen = ({navigation}) => {
                         <MaterialIcons name="attachment" size={24} color="black" />
                     </Pressable>
                     <Pressable onPress={()=>{
-                        
                     }} style={styles.top_icon} >
                         <MaterialIcons name="send" size={24} color="black" />
                     </Pressable>

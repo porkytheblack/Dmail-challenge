@@ -1,15 +1,23 @@
 import { MaterialIcons } from '@expo/vector-icons'
-import React from 'react'
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
+import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import { flex_row_between, flex_row_center, flex_row_start, generate_padding } from '../../globalStyles'
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import { useDispatch } from 'react-redux';
 import { action_drawer_out } from '../../redux';
 import Navigation from '../../navigation';
+import AccountDetails from '../AccountDetails';
 
 const SearchBox = ({navigation}) => {
     const dispatch = useDispatch();
+    const [is_ModalVisible, set_is_ModalVisible] = useState(false);
+    const show_modal = () =>{
+        set_is_ModalVisible(true)
+    }
+    const hide_modal = () =>{
+        set_is_ModalVisible(false)
+    }
     const drawer = () =>{
         navigation.openDrawer()
     }
@@ -41,9 +49,16 @@ const SearchBox = ({navigation}) => {
                             </View>
                         </Pressable>
                     </View>
+                    <Pressable onPress={()=>{
+                        show_modal()
+                    }} >
+                        <MaterialIcons name="person" size={24} color="black" />
+                    </Pressable>
                     
-                    <MaterialIcons name="person" size={24} color="black" />
                 </View>
+                <Modal visible={is_ModalVisible} transparent={true} animationType="none" >
+                    <AccountDetails hide_modal={hide_modal} />
+                </Modal>
             </View>
         )
     }else{
