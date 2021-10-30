@@ -6,7 +6,6 @@ import SearchBox from '../components/SearchBox/Index'
 const MeetScreen = () => {
     return (
         <ScrollView>
-            <SearchBox/>
         </ScrollView>
     )
 }

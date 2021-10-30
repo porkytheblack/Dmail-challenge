@@ -16,9 +16,11 @@ import CustomDrawerContent from '../components/DrawerContent/Index';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import ComposeScreen from '../screens/ComposeScreen';
 import MailScreen from '../screens/MailScreen';
 import MeetScreen from '../screens/MeetScreen';
 import ModalScreen from '../screens/ModalScreen';
+import ModalSearchScreen from '../screens/ModalSearchScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
@@ -44,12 +46,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <SafeAreaProvider>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-        <Stack.Group screenOptions={{ presentation: 'modal' }}>
-          <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
+          <Stack.Screen name="Modal" component={ModalSearchScreen} />
         </Stack.Group>
+        <Stack.Screen name="Compose" component={ComposeScreen}  />
       </Stack.Navigator>
     </SafeAreaProvider>
   );

@@ -18,6 +18,8 @@
    Root: NavigatorScreenParams<RootDrawerParamList> | undefined;
    Modal: undefined;
    NotFound: undefined;
+   Compose: undefined;
+   Read: undefined;
  };
  export type RootDrawerParamList = {
    Home: NavigatorScreenParams<RootTabParamList> | undefined;

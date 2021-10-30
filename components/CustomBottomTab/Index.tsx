@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import { flex_col_center, flex_row_center, flex_row_even, generate_padding } from '../../globalStyles'
+import { flex_col_center, flex_row_between, flex_row_center, flex_row_even, generate_padding } from '../../globalStyles'
 import { useFonts, Poppins_600SemiBold, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 
 const CustomBottomTab = (props: BottomTabBarProps) => {
@@ -19,9 +19,32 @@ const CustomBottomTab = (props: BottomTabBarProps) => {
         set_active([title])
     }
 
+    const go_to_compose = ()=>{
+        props.navigation.navigate("Compose");
+        console.log("Navigation")
+    }
+
     if(fontsloaded){
         return (
             <View style={styles.container} >
+                {active[0] !== "Meet" &&  
+                <View style={styles.pressable_float} >
+                
+                <View  style={styles.compose_container} >
+                <Pressable  style={styles.float_child} android_ripple={{
+                    color: "white",
+                    borderless: false,
+                    radius: 100
+                }} onPress={()=>{go_to_compose()}} >     
+                        <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+                        <Text style={styles.tab_text} > Compose</Text>
+                        
+                    </Pressable>
+                        
+                </View>
+                
+                </View>
+                }
                 {props.state.routeNames.map((title, index)=>{
                     return(
                         <Pressable key={index} onPress={()=>{
@@ -53,8 +76,9 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: 65,
-        backgroundColor: "rgb(240, 244, 245)",
-        ...flex_row_even
+        backgroundColor: "rgb(222, 234, 237)",
+        ...flex_row_even,
+        position: 'relative'
     },
     tab_container: {
         width: "50%",
@@ -84,5 +108,28 @@ const styles = StyleSheet.create({
     tab_text: {
         fontSize: 14,
         fontFamily: "Poppins_400Regular"
+    },
+    compose_container: {
+        
+        backgroundColor: 'rgba(51, 136, 255, 0.6)',
+        borderRadius: 8,
+        height: 50,
+        elevation: 30,
+        shadowColor: 'black'
+    },
+    float_child: {
+        width: "100%",
+        height: "100%",
+        ...flex_row_between,
+        ...generate_padding(0, 10, 0, 10),
+        backgroundColor: "yellow",
+        zIndex: 50
+    },
+    pressable_float: {
+        position: 'absolute',
+        height: 50,
+        top: -80,
+        right: 30,
+        
     }
 })

@@ -103,6 +103,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       },
       Modal: 'modal',
       NotFound: '*',
+      Compose: 'Compose'
     },
   },
 };

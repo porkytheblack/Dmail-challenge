@@ -13,6 +13,9 @@ const SearchBox = ({navigation}) => {
     const drawer = () =>{
         navigation.openDrawer()
     }
+    const search = ()=>{
+        navigation.navigate("Modal")
+    }
     let [fontsLoaded] = useFonts({
         Poppins_400Regular
     })
@@ -25,12 +28,20 @@ const SearchBox = ({navigation}) => {
                             <MaterialIcons name="menu" size={24} color="black" />
                         </Pressable>
                     </View>
-                    
-                    <View style={styles.search_text_container} >
-                        <Text style={styles.text_input} >
-                            Search
-                        </Text>
+                    <View>
+                    <Pressable android_ripple={{
+                            color: "white",
+                            borderless: true,
+                            radius: 100
+                        }} onPress={search} >
+                            <View style={styles.search_text_container} >
+                                <Text style={styles.text_input} >
+                                    Search
+                                </Text>
+                            </View>
+                        </Pressable>
                     </View>
+                    
                     <MaterialIcons name="person" size={24} color="black" />
                 </View>
             </View>
@@ -71,6 +82,7 @@ const styles = StyleSheet.create({
         color: "rgb(154, 147, 147)",
         fontSize: 18,
         fontFamily: "Poppins_400Regular",
+        width: "100%",
         ...flex_row_start
     },
     pressable_container: {
