@@ -104,7 +104,8 @@ const linking: LinkingOptions<RootStackParamList> = {
       Modal: 'modal',
       NotFound: '*',
       Compose: 'Compose',
-      Profile: "Profile"
+      Profile: "Profile",
+      Read: "ReadMail"
     },
   },
 };

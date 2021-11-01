@@ -1,18 +1,27 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { flex_col_end, flex_col_start, flex_row_center, flex_row_start, flex_row_top, generate_padding } from '../../globalStyles'
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
 
 const ListItem = () => {
     let [fontsLoaded] = useFonts({
         Poppins_400Regular, Poppins_600SemiBold
     })
+    const navigation = useNavigation()
+
     if(fontsLoaded){
         return (
-            <View style={styles.container} >
+            <Pressable android_ripple={{
+                color: "rgba(51, 136, 255, 0.3)",
+                borderless: false,
+                radius: 200
+            }} onPress={()=>{
+                navigation.navigate("Read")
+            }}  style={styles.container} >
                 <View style={styles.item_container} >
                     <View style={styles.icon_container} >
                     <Entypo name="spotify-with-circle" size={40} color="green" />
@@ -28,7 +37,7 @@ const ListItem = () => {
                         <MaterialIcons name="star-outline" size={24} color="black" />
                     </View>
                 </View>
-            </View>
+            </Pressable >
         )
     }else{
         return (<AppLoading/>)

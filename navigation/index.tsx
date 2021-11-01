@@ -23,6 +23,7 @@ import ModalScreen from '../screens/ModalScreen';
 import ModalSearchScreen from '../screens/ModalSearchScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import ReadMail from '../screens/ReadMail';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -55,6 +56,7 @@ function RootNavigator() {
           <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Stack.Group>
         <Stack.Screen name="Compose" component={ComposeScreen}  />
+        <Stack.Screen name="Read" component={ReadMail}  />
       </Stack.Navigator>
     </SafeAreaProvider>
   );
