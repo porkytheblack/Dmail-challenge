@@ -1,13 +1,35 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
-import React from 'react'
+import React, { ReactNode, useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { flex_col_center, flex_row_between, flex_row_center, flex_row_start, generate_padding } from '../globalStyles'
-import { Button } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/core';
 
 
 const ProfileScreen = () => {
     const navigation = useNavigation()
+    const [active_detail, set_active_detail] = useState("");
+
+    const toggle_input = (active: boolean ,  info: string, type: string): ReactNode =>{
+        if(active){
+            return(
+                <TextInput mode="outlined" label={type} placeholder={info}  />
+            )
+        }else{
+            return(
+                <TextInput disabled={true} mode="outlined" autoFocus={true} placeholder={info} />
+            )
+        }
+        
+    }
+
+    const activate_for_change = (s:string) =>{
+        set_active_detail(s);
+    }
+
+
+
+
     return (
         <View style={styles.container} >
             <View style={styles.top_container} >
@@ -34,6 +56,31 @@ const ProfileScreen = () => {
                 </View>
                 <Button mode="contained" icon="camera" >
                     Add Profile Picture
+                </Button>
+            </View>
+            <View style={styles.section} >
+                <View style={styles.section_heading} >
+                    <Text style={styles.big_black_text} >Username</Text>
+                </View>
+                <View style={styles.section_description} >
+                    <Text style={styles.small_gray_text} >
+                        Your username
+                    </Text>
+                </View>
+                <Pressable android_ripple={{
+                    color: "white",
+                    borderless: false,
+                    radius: 200
+                }} onPress={()=>{
+                    activate_for_change("username");
+                }} >
+                    {toggle_input(active_detail == "username", "username", "username")}
+                </Pressable>
+                
+            </View>
+            <View style={{...styles.section, marginTop: 40}} >
+            <Button mode="contained" >
+                    Save Changes
                 </Button>
             </View>
         </View>

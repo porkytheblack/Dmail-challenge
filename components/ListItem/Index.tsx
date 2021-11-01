@@ -6,7 +6,7 @@ import AppLoading from 'expo-app-loading';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 
 
-const Index = () => {
+const ListItem = () => {
     let [fontsLoaded] = useFonts({
         Poppins_400Regular, Poppins_600SemiBold
     })
@@ -14,11 +14,14 @@ const Index = () => {
         return (
             <View style={styles.container} >
                 <View style={styles.item_container} >
+                    <View style={styles.icon_container} >
                     <Entypo name="spotify-with-circle" size={40} color="green" />
+                    </View>
+                    
                     <View style={styles.item_details} >
                         <Text style={styles.item_details_sender}>Vercel</Text>
-                        <Text ellipsizeMode="tail" style={styles.item_details_sub_header} ></Text>
-                        <Text ellipsizeMode="tail" style={styles.item_details_content} ></Text>
+                        <Text ellipsizeMode="tail" style={styles.item_details_sub_header} >EEEEEEEEEE</Text>
+                        <Text ellipsizeMode="tail" style={styles.item_details_content} >EEEEEEEE</Text>
                     </View>
                     <View style={styles.side} >
                         <Text style={styles.item_details_sender} >11:00PM</Text>
@@ -33,7 +36,7 @@ const Index = () => {
     
 }
 
-export default Index
+export default ListItem
 
 const styles = StyleSheet.create({
     container: {
@@ -42,8 +45,8 @@ const styles = StyleSheet.create({
     },
     item_container: {
         ...flex_row_top,
-        width: 350,
-        height: 60,
+        width: "100%",
+        height: 100,
         ...generate_padding(10, 0, 15, 10),
     },
     item_details: {
@@ -69,4 +72,8 @@ const styles = StyleSheet.create({
     side:{
         ...flex_col_end
     },
+    icon_container: {
+        width: 50,
+        ...flex_row_top
+    }
 })

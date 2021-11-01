@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         height: 50,
         top: -80,
         right: 30,
-        
+        backgroundColor: "white",
         ...flex_row_center
         
     }
