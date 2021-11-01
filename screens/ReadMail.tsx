@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import SearchBox from '../components/SearchBox/Index'
-import { flex_col_center, flex_row_between, flex_row_even, flex_row_start, generate_padding } from '../globalStyles'
+import { flex_col_center, flex_col_center_top, flex_row_between, flex_row_even, flex_row_start, generate_padding } from '../globalStyles'
 
 const ReadMail = () => {
     return (
@@ -38,7 +38,27 @@ const styles = StyleSheet.create({
     },
     section_container: {
         width: "100%",
-        ...flex_col_center
+        ...flex_col_center_top
+    },
+    subject: {
+        color: "black",
+        fontSize: 18,
+        fontFamily: "Poppins_600SemiBold"
+    },
+    sender: {
+        color: "black",
+        fontSize: 14,
+        fontFamily: "Poppins_600SemiBold"
+    },
+    gray_text: {
+        color: "gray",
+        fontSize: 12,
+        fontFamily: "Poppins_600Regular"
+    },
+    email_text: {
+        color: "gray",
+        fontSize: 12,
+        fontFamily: "Poppins_400Regular"
     }
     
 })
