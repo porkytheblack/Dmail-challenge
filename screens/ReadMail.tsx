@@ -4,8 +4,13 @@ import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import SearchBox from '../components/SearchBox/Index'
 import { flex_col_center, flex_col_center_top, flex_col_start, flex_row_between, flex_row_center, flex_row_end, flex_row_even, flex_row_start, generate_padding } from '../globalStyles'
+import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+
 
 const ReadMail = () => {
+    const [fontsloaded] = useFonts({
+        Poppins_400Regular, Poppins_600SemiBold
+    })
     return (
         <ScrollView style={styles.container} >
             <View style={styles.top_controls_container} >
@@ -14,19 +19,25 @@ const ReadMail = () => {
                 </Text>
                 <MaterialIcons size={24} name="star-outline" color="black" />
             </View>
-            <View style={styles.top_controls_container} >
-                <View style={styles.icon_container} >
+            <View style={{
+                width: "100%",
+                ...flex_row_between,
+            }} >
+                <View style={{padding: 10, ...flex_col_center_top, height: "100%"}} >
                     <MaterialIcons name="person" color="black" size={30} />
                 </View>
                 <View  style={styles.detaills_container} >
-                    <View styles={{...flex_row_between}} >
-                        <Text ellipsizeMode="tail" >Eoething goes here</Text>
-                        <Text style={styles.gray_text} >
-                            7:40 am
+                    <View style={{ width: "100%",...flex_row_between}} >
+                        <Text ellipsizeMode="tail" style={{width: "60%", ...styles.sender}} >Everything goes here</Text>
+                        <Text style={{...styles.gray_text, width: "40%", paddingRight: 20}} >
+                            7:40am
                         </Text>
                     </View>
-                    <View style={styles.gray_text} >
-                        <Text>to me</Text>
+                    <View style={{
+                        width: "100%",
+                        ...flex_row_start
+                    }} >
+                        <Text style={styles.gray_text}>to me</Text>
                         <MaterialIcons name="arrow-drop-down" size={24}  color="black"   / >
                     </View>
                 </View>
@@ -52,7 +63,6 @@ const styles = StyleSheet.create({
     top_controls_container: {
         width: "100%",
         ...flex_row_between,
-        marginBottom: 20
     },
     top_controls_left: {
         width: "50%",
@@ -82,7 +92,7 @@ const styles = StyleSheet.create({
     gray_text: {
         color: "gray",
         fontSize: 12,
-        fontFamily: "Poppins_600Regular"
+        fontFamily: "Poppins_400Regular"
     },
     email_text: {
         color: "gray",

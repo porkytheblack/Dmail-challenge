@@ -9,9 +9,9 @@ import { generate_padding } from '../globalStyles'
 const MailScreen = ({navigation}) => {
     const list: number[] = [1,2,3,4,5,6,7,8,9,10,11]
     return (
-        <ScrollView onScrollToTop style={styles.container} >
+        <ScrollView style={styles.container} >
             <SearchBox navigation={navigation} />
-            <FlatList data={list}  renderItem={(props)=>(
+            <FlatList keyExtractor={(item, index)=>(index.toString())} data={list}  renderItem={(props)=>(
                 <ListItem/>
             )} />
         </ScrollView>

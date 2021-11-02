@@ -13,6 +13,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import CustomBottomTab from '../components/CustomBottomTab/Index';
 import CustomDrawerContent from '../components/DrawerContent/Index';
+import HeaderRight from '../components/HeaderRight';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -48,15 +49,19 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <SafeAreaProvider>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator >
         <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+        <Stack.Screen name="NotFound" component={NotFoundScreen}  options={{ title: 'Oops!' }} />
         <Stack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
           <Stack.Screen name="Modal" component={ModalSearchScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Stack.Group>
-        <Stack.Screen name="Compose" component={ComposeScreen}  />
-        <Stack.Screen name="Read" component={ReadMail}  />
+        <Stack.Screen name="Compose" options={{ headerShown: false }} component={ComposeScreen}  />
+        <Stack.Screen name="Read" options={{
+          headerRight: ()=>(
+            <HeaderRight/>
+          )
+        }} component={ReadMail}  />
       </Stack.Navigator>
     </SafeAreaProvider>
   );
