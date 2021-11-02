@@ -22,7 +22,6 @@ const CustomBottomTab = (props: BottomTabBarProps) => {
 
     const go_to_compose = ()=>{
         props.navigation.navigate("Compose");
-        console.log("Navigation")
     }
 
     if(fontsloaded){
@@ -31,11 +30,7 @@ const CustomBottomTab = (props: BottomTabBarProps) => {
                 {active[0] !== "Meet" &&  
                 <View style={styles.pressable_float} >
                     <View  style={styles.compose_container} >
-                        <TouchableOpacity  style={styles.float_child} android_ripple={{
-                            color: "white",
-                            borderless: false,
-                            radius: 100
-                        }} onPress={()=>{go_to_compose()}} >     
+                        <TouchableOpacity  style={styles.float_child}  onPress={()=>{go_to_compose()}} >     
                                 <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
                                 <Text style={styles.tab_text} > Compose</Text>
                         </TouchableOpacity>
@@ -75,7 +70,8 @@ const styles = StyleSheet.create({
         height: 65,
         backgroundColor: "rgb(222, 234, 237)",
         ...flex_row_even,
-        position: 'relative'
+        position: 'relative',
+        zIndex: 10
     },
     tab_container: {
         width: "50%",

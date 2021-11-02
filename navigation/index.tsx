@@ -57,11 +57,7 @@ function RootNavigator() {
           <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Stack.Group>
         <Stack.Screen name="Compose" options={{ headerShown: false }} component={ComposeScreen}  />
-        <Stack.Screen name="Read" options={{
-          headerRight: ()=>(
-            <HeaderRight/>
-          )
-        }} component={ReadMail}  />
+        <Stack.Screen name="Read" options={{headerShown: false}} component={ReadMail}  />
       </Stack.Navigator>
     </SafeAreaProvider>
   );
