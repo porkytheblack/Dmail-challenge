@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-
+import {Provider as PaperProvider} from "react-native-paper"
+ 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
@@ -17,12 +18,12 @@ export default function App() {
   } else {
     return (
       <Provider store={store} >
-        <SafeAreaProvider>
+        <PaperProvider>
           <SafeAreaView style={{width: "100%", height: "100%"}} >
             <Navigation colorScheme={colorScheme} />
             <StatusBar />
           </SafeAreaView>
-        </SafeAreaProvider>
+          </PaperProvider>
       </Provider>
     );
   }

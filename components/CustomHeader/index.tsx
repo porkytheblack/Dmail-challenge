@@ -1,7 +1,8 @@
 import { Feather, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { useState } from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
+import { Menu } from 'react-native-paper'
 import { flex_row_between, flex_row_start, generate_padding } from '../../globalStyles'
 
 const CustomHeader = () => {
@@ -12,6 +13,29 @@ const CustomHeader = () => {
     }
     const dismiss = () => {
         set_drop(false)
+    }
+    const menu_button = (title: string) =>{
+        return(
+            <View style={{
+                ...flex_row_start,
+                width: "100%"
+            }} >
+                <Pressable android_ripple={{
+                    color: "rgba(51, 136, 255, 0.3)",
+                    radius: 200,
+                    borderless: false
+                }} style={{
+                    ...flex_row_start,
+                    width: "100%",
+                    height: "100%",
+                    ...generate_padding(10, 0, 10, 5)
+                }} >
+                    <Text>
+                    {title}
+                    </Text>
+                </Pressable >
+            </View>
+        )
     }
     return (
         <View style={styles.container} >
@@ -49,6 +73,22 @@ const CustomHeader = () => {
                 }} >
                     <Feather name="mail" size={24} color="black" />
                 </Pressable>
+                <Menu style={styles.menu}  onDismiss={dismiss} visible={drop} anchor={
+                    <Pressable  onPress={activate_drop} android_ripple={{
+                        color: "rgba(51, 136, 255, 0.3)",
+                        radius: 30,
+                        borderless: true
+                    }} >
+                        <MaterialIcons name="more-vert" color="black" size={24} />
+                    </Pressable>
+                } >
+                    {menu_button("title")}
+                    {menu_button("title")}
+                    {menu_button("title")}
+                    {menu_button("title")}
+                    {menu_button("title")}
+                </Menu>
+                
             </View>
             
         </View>
@@ -64,7 +104,7 @@ const styles = StyleSheet.create({
         ...flex_row_between,
         backgroundColor: "white",
         borderBottomWidth: 0.5,
-        borderBottomColor: "rgba(0, 0, 0, 0.5)",
+        borderBottomColor: "rgba(0, 0, 0, 0.2)",
         position: "relative",
         zIndex: 30
     },
@@ -78,5 +118,10 @@ const styles = StyleSheet.create({
         height: "100%",
         ...flex_row_between,
         paddingLeft: 20
+    },
+    menu: {
+        width: 200,
+        padding: 0,
+        margin: 0
     }
 })
