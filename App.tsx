@@ -17,10 +17,12 @@ export default function App() {
   } else {
     return (
       <Provider store={store} >
-        <SafeAreaView style={{width: "100%", height: "100%"}} >
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar />
-        </SafeAreaView>
+        <SafeAreaProvider>
+          <SafeAreaView style={{width: "100%", height: "100%"}} >
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
+          </SafeAreaView>
+        </SafeAreaProvider>
       </Provider>
     );
   }

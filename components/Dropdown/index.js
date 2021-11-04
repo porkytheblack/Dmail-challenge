@@ -20,9 +20,6 @@ const styles = StyleSheet.create({
         width: 200,
         backgroundColor: "white",
         position: "absolute",
-        top: 0,
-        right: 0,
-        elevation: 60,
         height: 200
     },
     cont: {

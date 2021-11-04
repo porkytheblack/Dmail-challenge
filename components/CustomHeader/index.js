@@ -3,13 +3,15 @@ import { useNavigation } from '@react-navigation/core'
 import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { flex_row_between, flex_row_start, generate_padding } from '../../globalStyles'
-import DropDown from '../Dropdown'
 
 const CustomHeader = () => {
     const [drop, set_drop] = useState(false);
     const navigation = useNavigation()
     const activate_drop = () =>{
         set_drop(true)
+    }
+    const dismiss = () => {
+        set_drop(false)
     }
     return (
         <View style={styles.container} >
@@ -47,15 +49,8 @@ const CustomHeader = () => {
                 }} >
                     <Feather name="mail" size={24} color="black" />
                 </Pressable>
-                <Pressable android_ripple={{
-                    color: "rgba(51, 136, 255, 0.3)",
-                    radius: 30,
-                    borderless: true
-                }} onPress={activate_drop} >
-                    <MaterialIcons name="more-vert" size={24} color="black" />
-                </Pressable>
             </View>
-            {drop && <DropDown/>}
+            
         </View>
     )
 }

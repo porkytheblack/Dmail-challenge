@@ -1,8 +1,8 @@
 type s = {
-    display?: string,
-    flexDirection?: string,
-    alignItems?: string,
-    justifyContent?: string
+    display: string,
+    flexDirection: string,
+    alignItems: string,
+    justifyContent: string
 }
 
 const flex_row_center:s = {
@@ -34,21 +34,25 @@ const flex_row_top:s = {
 const flex_col_start:s = {
     display: "flex",
     alignItems: "flex-start",
+    flexDirection: "column",
     justifyContent: "center"
 }
 const flex_col_start_top:s = {
     display: "flex",
     alignItems: "flex-start",
+    flexDirection: "column",
     justifyContent: "flex-start"
 }
 
 const flex_col_center:s = {
     display: "flex",
     alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center"
 }
 const flex_col_center_top:s = {
     display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start"
 }
@@ -56,6 +60,7 @@ const flex_col_center_top:s = {
 const flex_col_end:s = {
     display: "flex",
     alignItems: "flex-end",
+    flexDirection: "column",
     justifyContent: "space-between"
 }
 
@@ -78,7 +83,15 @@ const flex_row_even:s = {
     alignItems: "center",
     justifyContent: "space-evenly"
 }
-const generate_padding = (t: number, r: number, b: number, l:number) =>{
+
+interface m {
+    paddingTop: number;
+    paddingRight: number;
+    paddingBottom: number;
+    paddingLeft: number;
+}
+
+const generate_padding = (t: number, r: number, b: number, l:number): m =>{
     return (
         {
             paddingTop: t,
