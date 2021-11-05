@@ -1,58 +1,132 @@
-import { Ionicons, MaterialIcons } from '@expo/vector-icons'
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import React, { useState } from 'react'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import SearchBox from '../components/SearchBox/Index'
-import { flex_col_center, flex_col_center_top, flex_col_start, flex_row_between, flex_row_center, flex_row_end, flex_row_even, flex_row_start, generate_padding } from '../globalStyles'
+import { flex_col_center, flex_col_center_top, flex_col_end, flex_col_start, flex_row_between, flex_row_center, flex_row_end, flex_row_even, flex_row_start, flex_row_top, generate_padding } from '../globalStyles'
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import CustomHeader from '../components/CustomHeader'
+import AppLoading from 'expo-app-loading'
+import { Menu } from 'react-native-paper'
 
 
 const ReadMail = () => {
     const [fontsloaded] = useFonts({
         Poppins_400Regular, Poppins_600SemiBold
     })
-    return (
-        <View style={styles.container} >
-            <CustomHeader/>
-            <View style={styles.top_controls_container} >
-                <Text style={styles.subject} >
-                    This is a subject
-                </Text>
-                <MaterialIcons size={24} name="star-outline" color="black" />
-            </View>
+    const [drop, set_drop] = useState(false);
+    const show_menu = ()=>{
+        set_drop(true)
+    }
+    const hide_menu = () =>{
+        set_drop(false)
+    }
+    const menu_button = (title: string) =>{
+        return(
             <View style={{
-                width: "100%",
-                ...flex_row_between,
-                height: 50,
-                ...generate_padding(0, 5,0,0)
+                ...flex_row_start,
+                width: "100%"
             }} >
-                <View style={{padding: 10, ...flex_col_center_top, height: "100%"}} >
-                    <MaterialIcons name="person" color="black" size={30} />
-                </View>
-                <View  style={styles.detaills_container} >
-                    <View style={{ width: "100%",...flex_row_between}} >
-                        <Text ellipsizeMode="tail" style={{width: "60%", ...styles.sender}} >Everything goes here</Text>
-                        <Text style={{...styles.gray_text, width: "40%", paddingRight: 20}} >
-                            7:40am
+                <Pressable android_ripple={{
+                    color: "rgba(51, 136, 255, 0.3)",
+                    radius: 200,
+                    borderless: false
+                }} style={{
+                    ...flex_row_start,
+                    width: "100%",
+                    height: "100%",
+                    ...generate_padding(10, 0, 10, 5)
+                }} >
+                    <Text style={styles.menu_item_text} >
+                    {title}
+                    </Text>
+                </Pressable >
+            </View>
+        )
+    }
+    if(fontsloaded){
+        return (
+            <View style={styles.container} >
+                <CustomHeader/>
+                <View style={styles.top_controls_container} >
+                    <View style={{
+                        width: "75%",
+                        ...flex_row_start
+                    }} >
+                        <Text  style={styles.subject} >
+                        This is a subject woth talking about, with everybody of course
                         </Text>
                     </View>
                     <View style={{
-                        width: "100%",
-                        ...flex_row_start
+                        width: "25%",
+                        ...flex_col_end,
+                        paddingRight: 10
                     }} >
-                        <Text style={styles.gray_text}>to me</Text>
-                        <MaterialIcons name="arrow-drop-down" size={24}  color="black"   / >
+                        <MaterialIcons size={24} name="star-outline" color="black" />
+                    </View>
+                    
+                </View>
+                <View style={{
+                    width: "100%",
+                    ...flex_row_start,
+                    ...generate_padding(0, 5,0,0)
+                }} >
+                    <View style={{paddingLeft: 10, paddingRight: 10, ...flex_row_top,}} >
+                        <FontAwesome name="reddit" size={40} color="orange" />
+                    </View>
+                    <View  style={styles.detaills_container} >
+                        <View style={{ width: "100%",...flex_row_between}} >
+                            <Text ellipsizeMode="tail" style={{width: "60%", ...styles.sender}} >Reddit</Text>
+                            <Text style={{...styles.gray_text, width: "40%", paddingRight: 20}} >
+                                7:40am
+                            </Text>
+                        </View>
+                        <View style={{
+                            width: "100%",
+                            ...flex_row_start
+                        }} >
+                            <Text style={styles.gray_text}>to me</Text>
+                            <MaterialIcons name="arrow-drop-down" size={24}  color="black"   / >
+                        </View>
+                    </View>
+                    <View style={styles.container_float_left}>
+                        
+                        
+
+                        <Pressable android_ripple={{
+                        color: "rgba(51, 136, 255, 0.3)",
+                        radius: 20,
+                        borderless: true
+                        }} >
+                            <Ionicons name="return-up-back" size={24} color="black" />
+                        </Pressable>
+
+                        <Menu style={{width: 200}} visible={drop} onDismiss={hide_menu} anchor={
+                            <Pressable android_ripple={{
+                                color: "rgba(51, 136, 255, 0.3)",
+                                radius: 20,
+                                borderless: true
+                                }} onPress={()=>{
+                                    show_menu()
+                                    }} >
+                                    <MaterialIcons name="more-vert" color="black" size={24} />
+                                </Pressable>
+                        }>
+                            {menu_button("Title")}
+                            {menu_button("Title")}
+                            {menu_button("Title")}
+                            {menu_button("Title")}
+                        </Menu>
+                        
                     </View>
                 </View>
-                <View style={styles.container_float_left}>
-                    <MaterialIcons name="reply"  color="black" size={24} />
-                    <MaterialIcons name="more-vert" color="black" size={24} />
-                </View>
+    
             </View>
-
-        </View>
-    )
+        )
+    }else{
+        return(<AppLoading/>)
+    }
+    
 }
 
 export default ReadMail
@@ -89,12 +163,13 @@ const styles = StyleSheet.create({
     },
     subject: {
         color: "black",
-        fontSize: 18,
-        fontFamily: "Poppins_600SemiBold"
+        fontSize: 24,
+        fontFamily: "Poppins_400Regular",
+        textAlign: "left"
     },
     sender: {
         color: "black",
-        fontSize: 14,
+        fontSize: 18,
         fontFamily: "Poppins_600SemiBold"
     },
     gray_text: {
@@ -113,18 +188,24 @@ const styles = StyleSheet.create({
         ...flex_row_end
     },
     container_float_left: {
-        width: "100%",
         height: "100%",
-        ...flex_row_start
+        width: "32%",
+        ...flex_row_between,
+        paddingLeft: 20
     },
     icon_container: {
         ...generate_padding(10,10,10,10),
         ...flex_row_center
     },
     detaills_container: {
-        width: "100%",
-        height: "100%",
+        width: "50%",
         ...flex_col_start
+    },
+    menu_item_text: {
+        fontSize: 16,
+        color: "black",
+        fontFamily: "Poppins_400Regular",
+        paddingLeft: 20
     }
     
 })

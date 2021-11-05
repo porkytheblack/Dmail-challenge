@@ -1,9 +1,10 @@
-import { Feather, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import { AntDesign, Feather, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/core'
 import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import { Menu } from 'react-native-paper'
 import { flex_row_between, flex_row_start, generate_padding } from '../../globalStyles'
+import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 
 const CustomHeader = () => {
     const [drop, set_drop] = useState(false);
@@ -30,7 +31,7 @@ const CustomHeader = () => {
                     height: "100%",
                     ...generate_padding(10, 0, 10, 5)
                 }} >
-                    <Text>
+                    <Text style={styles.menu_item_text} >
                     {title}
                     </Text>
                 </Pressable >
@@ -42,7 +43,7 @@ const CustomHeader = () => {
             <View style={styles.l} >
             <Pressable android_ripple={{
                     color: "rgba(51, 136, 255, 0.3)",
-                    radius: 30,
+                    radius: 20,
                     borderless: true
                 }} onPress={()=>{
                     navigation.goBack()
@@ -54,21 +55,21 @@ const CustomHeader = () => {
             <View style={styles.r} >
                 <Pressable android_ripple={{
                     color: "rgba(51, 136, 255, 0.3)",
-                    radius: 30,
+                    radius: 20,
                     borderless: true
                 }}  >
                     <Ionicons name="archive-outline" size={24} color="black" />
                 </Pressable>
                 <Pressable android_ripple={{
                     color: "rgba(51, 136, 255, 0.3)",
-                    radius: 30,
+                    radius: 20,
                     borderless: true
                 }} >
-                <MaterialIcons name="delete-outline" size={24} color="black" />
+                <AntDesign name="delete" size={24} color="black" />
                 </Pressable>
                 <Pressable android_ripple={{
                     color: "rgba(51, 136, 255, 0.3)",
-                    radius: 30,
+                    radius: 20,
                     borderless: true
                 }} >
                     <Feather name="mail" size={24} color="black" />
@@ -76,17 +77,17 @@ const CustomHeader = () => {
                 <Menu style={styles.menu}  onDismiss={dismiss} visible={drop} anchor={
                     <Pressable  onPress={activate_drop} android_ripple={{
                         color: "rgba(51, 136, 255, 0.3)",
-                        radius: 30,
+                        radius: 20,
                         borderless: true
                     }} >
                         <MaterialIcons name="more-vert" color="black" size={24} />
                     </Pressable>
                 } >
-                    {menu_button("title")}
-                    {menu_button("title")}
-                    {menu_button("title")}
-                    {menu_button("title")}
-                    {menu_button("title")}
+                    {menu_button("Title")}
+                    {menu_button("Title")}
+                    {menu_button("Title")}
+                    {menu_button("Title")}
+                    {menu_button("Title")}
                 </Menu>
                 
             </View>
@@ -100,7 +101,7 @@ export default CustomHeader
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        ...generate_padding(10, 0,10,10),
+        ...generate_padding(10, 0,5,10),
         ...flex_row_between,
         backgroundColor: "white",
         borderBottomWidth: 0.5,
@@ -117,11 +118,18 @@ const styles = StyleSheet.create({
         width: "50%",
         height: "100%",
         ...flex_row_between,
-        paddingLeft: 20
+        paddingLeft: 20,
+        paddingBottom: 5
     },
     menu: {
         width: 200,
         padding: 0,
         margin: 0
+    },
+    menu_item_text: {
+        fontSize: 16,
+        color: "black",
+        fontFamily: "Poppins_400Regular",
+        paddingLeft: 20
     }
 })

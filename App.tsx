@@ -18,12 +18,14 @@ export default function App() {
   } else {
     return (
       <Provider store={store} >
-        <PaperProvider>
+        
           <SafeAreaView style={{width: "100%", height: "100%"}} >
+            <PaperProvider >
             <Navigation colorScheme={colorScheme} />
+            </PaperProvider>
             <StatusBar />
           </SafeAreaView>
-          </PaperProvider>
+          
       </Provider>
     );
   }

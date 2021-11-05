@@ -9,12 +9,12 @@ import { generate_padding } from '../globalStyles'
 const MailScreen = ({navigation}) => {
     const list: number[] = [1,2,3,4,5,6,7,8,9,10,11]
     return (
-        <ScrollView style={styles.container} >
-            <SearchBox navigation={navigation} />
-            <FlatList keyExtractor={(item, index)=>(index.toString())} data={list}  renderItem={(props)=>(
+            
+            <FlatList ListHeaderComponentStyle={{
+                marginBottom: 20
+            }} ListHeaderComponent={<SearchBox navigation={navigation} />} style={styles.container} keyExtractor={(item, index)=>(index.toString())} data={list}  renderItem={(props)=>(
                 <ListItem/>
             )} />
-        </ScrollView>
     )
 }
 
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         ...generate_padding(20, 5, 20, 5),
-        backgroundColor: "white"
+        backgroundColor: "white",
     }
 })

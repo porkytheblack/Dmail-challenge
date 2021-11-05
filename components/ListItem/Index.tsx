@@ -33,8 +33,8 @@ const ListItem = () => {
                         <Text ellipsizeMode="tail" style={styles.item_details_content} >EEEEEEEE</Text>
                     </View>
                     <View style={styles.side} >
-                        <Text style={styles.item_details_sender} >11:00PM</Text>
-                        <MaterialIcons name="star-outline" size={24} color="black" />
+                        <Text style={{...styles.item_details_content, marginTop: 0}} >11:00PM</Text>
+                        <MaterialIcons style={{marginBottom: 0}} name="star-outline" size={24} color="black" />
                     </View>
                 </View>
             </Pressable >
@@ -55,31 +55,33 @@ const styles = StyleSheet.create({
     item_container: {
         ...flex_row_top,
         width: "100%",
-        height: 100,
-        ...generate_padding(10, 0, 15, 10),
+        marginBottom: 20,
+        ...generate_padding(0,10,0,10)
     },
     item_details: {
         ...flex_col_start,
-        height: "100%",
-        width: 215
+        width: "70%",
+        
     },
     item_details_sender: {
-        fontSize: 14,
+        fontSize: 16,
         color: "black",
         fontFamily: "Poppins_600SemiBold"
     },
     item_details_sub_header:{
-        fontSize: 12,
+        fontSize: 14,
         color: "black",
         fontFamily: "Poppins_600SemiBold"
     },
     item_details_content:{
-        fontSize: 12,
+        fontSize: 14,
         color: "black",
         fontFamily: "Poppins_400Regular"
     },
     side:{
-        ...flex_col_end
+       display: "flex",
+       alignItems: "flex-end",
+       justifyContent: "space-between",
     },
     icon_container: {
         width: 50,

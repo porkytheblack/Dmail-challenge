@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
         backgroundColor: "rgb(222, 234, 237)",
         ...flex_row_even,
         position: 'relative',
-        zIndex: 10
     },
     tab_container: {
         width: "50%",
