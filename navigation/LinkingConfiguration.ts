@@ -105,7 +105,8 @@ const linking: LinkingOptions<RootStackParamList> = {
       NotFound: '*',
       Compose: 'Compose',
       Profile: "Profile",
-      Read: "ReadMail"
+      Read: "ReadMail",
+      Authenticate: "Auth"
     },
   },
 };
