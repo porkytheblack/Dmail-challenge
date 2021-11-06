@@ -6,6 +6,8 @@ import { useFonts, Poppins_600SemiBold, Poppins_400Regular } from '@expo-google-
 import AppLoading from 'expo-app-loading';
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch } from 'react-redux';
+import { toggle_press } from '../../redux';
 
 
 const CustomBottomTab = (props: BottomTabBarProps) => {
@@ -13,6 +15,7 @@ const CustomBottomTab = (props: BottomTabBarProps) => {
         Poppins_400Regular,
         Poppins_600SemiBold
     })
+    const dispatch = useDispatch()
 
     const [active, set_active] = useState(["Mail"]);
     const activate_tab_item = (title: string) =>{
@@ -21,7 +24,9 @@ const CustomBottomTab = (props: BottomTabBarProps) => {
     }
 
     const go_to_compose = ()=>{
-        props.navigation.navigate("Compose");
+        dispatch(toggle_press(true))
+
+        props.navigation.navigate("Compose");        
     }
 
     if(fontsloaded){

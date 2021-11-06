@@ -104,7 +104,8 @@ const styles = StyleSheet.create({
     top_container_logo: {
         width: "80%",
         height: "100%",
-        ...flex_row_center
+        ...flex_row_start,
+        paddingLeft: 40
     },
     logo_text: {
         fontSize: 24,

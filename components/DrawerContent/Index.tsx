@@ -5,8 +5,12 @@ import { flex_col_start, flex_row_start, generate_padding } from '../../globalSt
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+import { toggle_screen } from '../../redux';
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => {
+
+    const dispatch= useDispatch()
 
     const _icons: React.ReactNode = [
         <MaterialIcons name="all-inbox" size={24} color="black" />,
@@ -47,6 +51,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
     const [active, set_active] = useState([""]);
 
     const add_active = (t: string)=>{
+        dispatch(toggle_screen(t))
         set_active([t]);
         props.navigation.navigate(t)
     }
@@ -56,7 +61,7 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
             <View key={key} style={{
                 width: "100%",
             }} >
-                <DrawerItem icon={({...props})=>(_icons[titles.indexOf(title)])} activeBackgroundColor="yellow" style={active[0] == title ? styles.drawer_item_active  : styles.drawer_item}    key={key} label={title} labelStyle={styles.drawer_item_text} onPress={()=>{
+                <DrawerItem  icon={({...props})=>(_icons[titles.indexOf(title)])}  style={active[0] == title ? styles.drawer_item_active  : styles.drawer_item}    key={key} label={title} labelStyle={styles.drawer_item_text} onPress={()=>{
                     add_active(title)
                 }} />
             </View>
@@ -114,6 +119,8 @@ const styles = StyleSheet.create({
         height: 50,
     },
     drawer_item_text: {
-        fontSize: 20,
+        fontSize: 18,
+        color: "black",
+        fontFamily: "Poppins_400Regular"
     }
 })

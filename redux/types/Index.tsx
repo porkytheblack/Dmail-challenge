@@ -3,6 +3,8 @@ const drawer_in = "DRAWER_IN"
 const searching = "SEARCHING"
 const scroll_up = "SCROLL_UP"
 const scroll_down = "SCROLL_DOWN"
+const top_press = "TOP_PRESS"
+const switch_screen = "SWITCH_SCREEN"
 
 interface LayoutInterface {
     drawer_out: boolean;
@@ -10,6 +12,13 @@ interface LayoutInterface {
     searching: boolean;
     scroll_up: boolean;
     scroll_down: boolean;
+    top_press: boolean;
+    switch_screen: string;
+}
+
+interface top_press_down {
+    type: typeof top_press;
+    payload: boolean
 }
 
 interface move_drawer_in {
@@ -32,8 +41,14 @@ interface scrolldown {
     type: typeof scroll_down;
     payload: boolean;
 }
+interface toggle_screen {
+    type: typeof switch_screen,
+    payload: string
+}
 
-type LayoutActionTypes = move_drawer_in | move_drawer_out | toggle_search | scrollup | scrolldown ;
 
 
-export {LayoutInterface, drawer_in, drawer_out, searching, scroll_up, scroll_down, LayoutActionTypes}
+type LayoutActionTypes = toggle_screen | move_drawer_in | move_drawer_out | toggle_search | scrollup | scrolldown | top_press_down ;
+
+
+export {LayoutInterface, switch_screen, drawer_in, drawer_out, searching, scroll_up, scroll_down, top_press, LayoutActionTypes}

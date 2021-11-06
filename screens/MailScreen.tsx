@@ -1,4 +1,5 @@
 import { PROPERTY_TYPES } from '@babel/types'
+import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -8,6 +9,7 @@ import { generate_padding } from '../globalStyles'
 
 const MailScreen = ({navigation}) => {
     const list: number[] = [1,2,3,4,5,6,7,8,9,10,11]
+    
     return (
             
             <FlatList ListHeaderComponentStyle={{

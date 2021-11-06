@@ -1,10 +1,12 @@
 import React from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { flex_col_end, flex_col_start, flex_row_center, flex_row_start, flex_row_top, generate_padding } from '../../globalStyles'
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
+import { useSelector } from 'react-redux';
+import { rootReducer, RootState } from '../../redux';
 
 
 const ListItem = () => {
@@ -12,15 +14,19 @@ const ListItem = () => {
         Poppins_400Regular, Poppins_600SemiBold
     })
     const navigation = useNavigation()
-
+    const toppress = useSelector((state: RootState) => state.layout.top_press)
     if(fontsLoaded){
         return (
-            <Pressable android_ripple={{
+            <TouchableWithoutFeedback  android_ripple={toppress ? {
+
+            }:{
                 color: "rgba(51, 136, 255, 0.3)",
                 borderless: false,
                 radius: 200
             }} onPress={()=>{
-                navigation.navigate("Read")
+                if(!toppress){
+                    navigation.navigate("Read")
+                }
             }}  style={styles.container} >
                 <View style={styles.item_container} >
                     <View style={styles.icon_container} >
@@ -37,7 +43,7 @@ const ListItem = () => {
                         <MaterialIcons style={{marginBottom: 0}} name="star-outline" size={24} color="black" />
                     </View>
                 </View>
-            </Pressable >
+            </TouchableWithoutFeedback >
         )
     }else{
         return (<AppLoading/>)

@@ -81,8 +81,9 @@ const styles = StyleSheet.create({
     },
     top_container_logo: {
         width: "90%",
-        ...flex_row_center,
-        height: "100%"
+        ...flex_row_start,
+        height: "100%",
+        paddingLeft: 60
     },
     user_details_container: {
         width: "100%",

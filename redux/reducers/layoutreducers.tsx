@@ -5,7 +5,9 @@ const initialState : LayoutInterface = {
     drawer_in: true,
     scroll_up: true,
     scroll_down: false,
-    searching: false
+    searching: false,
+    top_press: false,
+    switch_screen: "Home"
 }
 
 export function layoutReducer(state: LayoutInterface = initialState, action: LayoutActionTypes): LayoutInterface {
@@ -38,6 +40,18 @@ export function layoutReducer(state: LayoutInterface = initialState, action: Lay
             return {
                 ...state,
                 searching: action.payload
+            }
+        }
+        case "TOP_PRESS" : {
+            return {
+                ...state,
+                top_press: action.payload
+            }
+        }
+        case "SWITCH_SCREEN" : {
+            return {
+                ...state,
+                switch_screen: action.payload
             }
         }
         default: {

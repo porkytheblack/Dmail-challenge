@@ -57,7 +57,14 @@ const SearchBox = ({navigation}) => {
                     
                 </View>
                 <Modal visible={is_ModalVisible} transparent={true} animationType="none" >
-                    <AccountDetails hide_modal={hide_modal} />
+                    <View style={{
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "rgba(0, 0,0,0.5)"
+                    }} >
+                        <AccountDetails hide_modal={hide_modal} />
+                    </View>
+                    
                 </Modal>
             </View>
         )

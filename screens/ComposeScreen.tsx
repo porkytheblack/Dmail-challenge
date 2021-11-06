@@ -1,10 +1,14 @@
 import { Feather, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
 import { KeyboardAvoidingView, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { useDispatch } from 'react-redux'
 import { flex_col_start, flex_row_around, flex_row_between, flex_row_end, flex_row_even, flex_row_start, generate_padding } from '../globalStyles'
+import { toggle_press } from '../redux'
 
 const ComposeScreen = ({navigation}) => {
+    const dispatch = useDispatch()
     const go_back = () =>{
+        dispatch(toggle_press(false))
         navigation.goBack()
     }
     return (
@@ -69,9 +73,8 @@ const styles = StyleSheet.create({
     },
     top_container: {
         width: "100%",
-        height: 100,
         ...generate_padding(10, 0, 10, 5),
-        ...flex_row_between
+        ...flex_row_between,
     },
     top_container_left:{
         width: "50%",
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
         fontFamily: "Poppins_400Regular",
         color: "black",
         width: "100%",
-        height: "100%",
+        paddingBottom: 50, 
         ...flex_col_start
     }
 })
