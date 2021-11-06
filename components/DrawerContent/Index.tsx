@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         ...generate_padding(0,0,0,20)
     },
     logo: {
-        fontSize: 24,
+        fontSize: 20,
         color: "rgb(246, 83, 20)",
         fontFamily: "Poppins_600SemiBold",
     },
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         height: 50,
     },
     drawer_item_text: {
-        fontSize: 18,
+        fontSize: 16,
         color: "black",
         fontFamily: "Poppins_400Regular"
     }
