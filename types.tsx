@@ -21,7 +21,10 @@
    Compose: undefined;
    Read: undefined;
    Profile: undefined;
-   Authenticate: undefined;
+   Authenticate: {
+     auth_type: string
+   }
+   InitialScreen: undefined;
  };
  export type RootDrawerParamList = {
    Home: NavigatorScreenParams<RootTabParamList> | undefined;

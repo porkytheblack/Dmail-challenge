@@ -106,7 +106,8 @@ const linking: LinkingOptions<RootStackParamList> = {
       Compose: 'Compose',
       Profile: "Profile",
       Read: "ReadMail",
-      Authenticate: "Auth"
+      Authenticate: "Auth",
+      InitialScreen: "InitialScreen"
     },
   },
 };

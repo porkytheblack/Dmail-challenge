@@ -19,6 +19,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import Authenticate from '../screens/Authenticate';
 import ComposeScreen from '../screens/ComposeScreen';
+import InitialScreen from '../screens/InitialScreen';
 import MailScreen from '../screens/MailScreen';
 import MeetScreen from '../screens/MeetScreen';
 import ModalScreen from '../screens/ModalScreen';
@@ -50,7 +51,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <SafeAreaProvider>
-      <Stack.Navigator initialRouteName="Authenticate" >
+      <Stack.Navigator initialRouteName="InitialScreen" >
         <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="NotFound" component={NotFoundScreen}  options={{ title: 'Oops!' }} />
         <Stack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
@@ -60,6 +61,7 @@ function RootNavigator() {
         <Stack.Screen name="Compose" options={{ headerShown: false }} component={ComposeScreen}  />
         <Stack.Screen name="Read" options={{headerShown: false}} component={ReadMail}  />
         <Stack.Screen name="Authenticate" options={{headerShown: false}} component={Authenticate}  />
+        <Stack.Screen name="InitialScreen" options={{headerShown: false}} component={InitialScreen}  />
       </Stack.Navigator>
     </SafeAreaProvider>
   );
