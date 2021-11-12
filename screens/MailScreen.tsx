@@ -17,7 +17,7 @@ import trash from "../assets/images/illustrations/trash.png"
 
 const MailScreen = ({navigation}) => {
     const list: number[] = [1,2,3,4,5,6,7,8,9,10,11]
-    const screen = useSelector((state: RootState)=>state.layout.switch_screen)
+    const screen = useSelector((state: RootState)=>state?.layout.switch_screen)
     console.log(screen)
     if(screen == "Home"){
         return (

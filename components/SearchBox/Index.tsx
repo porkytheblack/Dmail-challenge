@@ -4,12 +4,23 @@ import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-nativ
 import { flex_row_between, flex_row_center, flex_row_start, generate_padding } from '../../globalStyles'
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
-import { useDispatch } from 'react-redux';
-import { action_drawer_out } from '../../redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { action_drawer_out, RootState } from '../../redux';
 import Navigation from '../../navigation';
 import AccountDetails from '../AccountDetails';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-initials-sprites';
+import Svg from 'react-native-svg';
 
 const SearchBox = ({navigation}) => {
+    const [user_obj, set_user_obj] = useState({})
+    const user = useSelector((state: RootState)=>state.user.user)
+    if(user){
+        set_user_obj(user)
+    }
+    let Initials = createAvatar(style, {
+        seed: `${user.first_name}`,
+      });
     const dispatch = useDispatch();
     const [is_ModalVisible, set_is_ModalVisible] = useState(false);
     const show_modal = () =>{
@@ -52,7 +63,8 @@ const SearchBox = ({navigation}) => {
                     <Pressable onPress={()=>{
                         show_modal()
                     }} >
-                        <MaterialIcons name="person" size={24} color="black" />
+                        <Initials/>
+                        {/* <MaterialIcons name="person" size={24} color="black" /> */}
                     </Pressable>
                     
                 </View>

@@ -10,7 +10,6 @@ interface error_message {
     details: any;
 }
 
-const dispatch = useDispatch()
 
 export const action_create_user: ActionCreator<UserActionTypes> = (b: any) =>{
     return{
@@ -46,20 +45,7 @@ export const delete_token: ActionCreator<UserActionTypes> = ()=>{
     }
 }
 
-export const user_create = (user: any): void | error_message=>{
-    create_user(user).then((res: AxiosResponse)=>{
-        if(res.status == 200){
-            dispatch(create_user({
-                ...res.data
-            }))
-        }else{
-            return {
-                status: res.status,
-                details: res.data
-            }
-        }
-    })
-}
+
 
 
 

@@ -1,13 +1,24 @@
 import { useFonts, Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/poppins'
 import { useNavigation } from '@react-navigation/core'
 import AppLoading from 'expo-app-loading'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
+import { useDispatch } from 'react-redux'
 import { flex_col_center_top, flex_row_between, generate_padding } from '../globalStyles'
+import { action_create_user, action_generate_token } from '../redux'
+import { create_user, generate_new_token } from '../services/UserServices'
 
 
 const Authenticate = ({route, navigation}) => {
+    const dispatch = useDispatch()
+    const [user_name, set_user_name] = useState("")
+    const [first_name, set_first_name] = useState("")
+    const [last_name, set_last_name] = useState("")
+    const [password, set_password] = useState("")
+    const [mobile_number, set_mobile_number] = useState(null)
+
+
     const [fontsloaded] = useFonts({
         Poppins_400Regular,
         Poppins_600SemiBold
@@ -15,6 +26,29 @@ const Authenticate = ({route, navigation}) => {
     const nav =useNavigation()
     const go_to_mail = () =>{
         nav.navigate("Root")
+    }
+
+    const signup = ()=>{
+        create_user({
+            user_name, first_name, last_name, password, mobile_number
+        }).then((res)=>{
+            dispatch(action_create_user(res.data))
+        }).then(()=>{
+            go_to_mail()
+        }).catch((e)=>{
+            dispatch(action_create_user(null))
+        })
+    }
+    const signin = () =>{
+        generate_new_token({
+            user_name,
+            password
+        }).then((res)=>{
+            dispatch(action_generate_token(res.data))
+            go_to_mail() 
+        }).catch((e)=>{
+            dispatch(action_generate_token(null))
+        })
     }
     
 
@@ -40,20 +74,30 @@ const Authenticate = ({route, navigation}) => {
             }} >
                 <Text style={styles.logo_text} >Dmail.</Text>
                 <View style={{width: "100%", marginBottom: 20, ...flex_row_between}} >
-                    <TextInput style={{width: "45%"}} mode="outlined" label="firstname" placeholder="firstname"  />
-                    <TextInput style={{width: "45%"}} mode="outlined" label="lastname" placeholder="lastname"  />
+                    <TextInput style={{width: "45%"}} value={first_name} onChangeText={(e)=>{
+                        set_first_name(e)
+                    }} mode="outlined" label="firstname" placeholder="firstname"  />
+                    <TextInput style={{width: "45%"}} value={last_name} onChangeText={(e)=>{
+                        set_last_name(e)
+                    }} mode="outlined" label="lastname" placeholder="lastname"  />
                 </View>
                 <View style={{width: "100%", marginBottom: 20}} >
-                    <TextInput mode="outlined" label="username" placeholder="username"  />
+                    <TextInput value={user_name} onChangeText={(e)=>{
+                        set_user_name(e)
+                    }} mode="outlined" label="username" placeholder="username"  />
+                </View>
+                <View style={{width: "100%", marginBottom: 20}} >
+                    <TextInput value={mobile_number} onChangeText={(e)=>{
+                        set_mobile_number(e)
+                    }} mode="outlined" label="mobile number" placeholder="mobile number"  />
                 </View>
                 <View style={{width: "100%"}} >
-                    <TextInput mode="outlined" label="password" placeholder="password"  />
-                </View>
-                <View style={{width: "100%"}} >
-                    <TextInput mode="outlined" label="Confirm password" placeholder="Confirm password"  />
+                    <TextInput value={password} onChangeText={(e)=>{
+                        set_password(e)
+                    }} mode="outlined" label="password" placeholder="password"  />
                 </View>
                 <View style={{marginTop: 40}}>
-                <Button onPress={go_to_mail} style={{width: "80%"}} mode="contained" >
+                <Button onPress={signup} style={{width: "80%"}} mode="contained" >
                     Sign Up
                 </Button>
                 </View>
@@ -71,13 +115,17 @@ const Authenticate = ({route, navigation}) => {
             }} >
                 <Text style={styles.logo_text} >Dmail.</Text>
                 <View style={{width: "100%", marginBottom: 20}} >
-                    <TextInput mode="outlined" label="username" placeholder="username"  />
+                    <TextInput value={user_name} onChangeText={(e)=>{
+                        set_user_name(e)
+                    }} mode="outlined" label="username" placeholder="username"  />
                 </View>
                 <View style={{width: "100%"}} >
-                    <TextInput mode="outlined" label="password" placeholder="password"  />
+                    <TextInput onChangeText={(e)=>{
+                        set_password(e)
+                    }} mode="outlined" label="password" placeholder="password"  />
                 </View>
                 <View style={{marginTop: 40}}>
-                <Button onPress={go_to_mail} style={{width: "80%"}} mode="contained" >
+                <Button onPress={signin} style={{width: "80%"}} mode="contained" >
                     Login
                 </Button>
                 </View>

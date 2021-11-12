@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Document, Types } from "mongoose";
+import { useDispatch } from "react-redux";
 
 interface contact extends Types.Subdocument {
     user_name?: string;
@@ -40,7 +41,7 @@ interface user extends Document {
 export const create_user = async (User: any): Promise<any>  => {
     const options: AxiosRequestConfig = {
         url: "/user",
-        baseURL: "/",
+        baseURL: "https://8080-scarlet-mackerel-4kxbwbhd.ws-eu18.gitpod.io",
         method: "post",
         data: User,
     }
@@ -53,14 +54,16 @@ export const create_user = async (User: any): Promise<any>  => {
     })
 }
 
-export const generate_new_token = async(User: any): Promise<AxiosResponse> =>{
+export const generate_new_token = async(User: any): Promise<any> =>{
     const options: AxiosRequestConfig = {
-        url: "/tokens",
-        baseURL: "/",
+        url: "/token",
+        baseURL: "https://8080-scarlet-mackerel-4kxbwbhd.ws-eu18.gitpod.io",
         method: "post",
         data: User
     }
-    axios(options).then((res)=>{
+    return axios(options).then((res)=>{
         return res
+    }).catch((e)=>{
+        return e
     })
 }
