@@ -10,7 +10,7 @@ const initialState : LayoutInterface = {
     switch_screen: "Home"
 }
 
-export function layoutReducer(state: LayoutInterface = initialState, action: LayoutActionTypes): LayoutInterface {
+export function layReducer(state: LayoutInterface = initialState, action: LayoutActionTypes): LayoutInterface {
     switch(action.type){
         case "DRAWER_IN": {
             return {

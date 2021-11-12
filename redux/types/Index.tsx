@@ -5,6 +5,16 @@ const scroll_up = "SCROLL_UP"
 const scroll_down = "SCROLL_DOWN"
 const top_press = "TOP_PRESS"
 const switch_screen = "SWITCH_SCREEN"
+const set_user = "SET_USER"
+const set_token = "SET_TOKEN"
+const tupdate_token = "UPDATE_TOKEN"
+const tedit_user = "EDIT_USER"
+const tdelete_token = "DELETE_TOKEN"
+
+interface UserInterface {
+    user: any;
+    token: any;
+}
 
 interface LayoutInterface {
     drawer_out: boolean;
@@ -46,9 +56,31 @@ interface toggle_screen {
     payload: string
 }
 
+interface create_user{
+    type: typeof set_user;
+    payload: any
+}
+interface create_token {
+    type: typeof set_token;
+    payload: any;
+}
+interface delete_token {
+    type: typeof tdelete_token;
+    payload: any;
+}
+interface update_token{
+    type: typeof tupdate_token;
+    payload: any;
+}
+interface edit_user{
+    type: typeof tedit_user;
+    payload: any;
+}
+
 
 
 type LayoutActionTypes = toggle_screen | move_drawer_in | move_drawer_out | toggle_search | scrollup | scrolldown | top_press_down ;
+type UserActionTypes = create_user | create_token | edit_user | update_token | delete_token;
 
-
+export {UserActionTypes, set_user, set_token, UserInterface, tedit_user, tupdate_token, tdelete_token}
 export {LayoutInterface, switch_screen, drawer_in, drawer_out, searching, scroll_up, scroll_down, top_press, LayoutActionTypes}
